@@ -1,0 +1,4 @@
+Name: fmt
+Description: Conan package: fmt
+Version: 9.1.0
+Requires: fmt-_fmt

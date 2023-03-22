@@ -1,0 +1,14 @@
+[
+  {
+    "directory": "C:\\Users\\jawad\\Desktop\\learnopengl\\build\\meson-src",
+    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw99900f39ca489/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtf6693e9b8f040/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/Zc:__cplusplus\" \"/W2\" \"/EHsc\" \"/std:c++14\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_main.cpp.pdb\" /Folearnopengl.exe.p/src_main.cpp.obj \"/c\" ../../src/main.cpp",
+    "file": "../../src/main.cpp",
+    "output": "learnopengl.exe.p/src_main.cpp.obj"
+  },
+  {
+    "directory": "C:\\Users\\jawad\\Desktop\\learnopengl\\build\\meson-src",
+    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw99900f39ca489/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtf6693e9b8f040/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/W2\" \"/std:c17\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_glad.c.pdb\" /Folearnopengl.exe.p/src_glad.c.obj \"/c\" ../../src/glad.c",
+    "file": "../../src/glad.c",
+    "output": "learnopengl.exe.p/src_glad.c.obj"
+  }
+]
