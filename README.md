@@ -1,6 +1,6 @@
 # learnopengl
 
-Me following along with LearnOpenGL but with a few added abstractions and niceties
+Following along with LearnOpenGL but with a few added abstractions and niceties
 
 # Build dependencies:
 * Meson
