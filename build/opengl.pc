@@ -1,7 +1,0 @@
-prefix=C:/Users/jawad/.conan2/p/openg3911055c8f7d6/p
-
-Name: opengl
-Description: Conan package: opengl
-Version: system
-Libs: -lopengl32 
-Cflags: 

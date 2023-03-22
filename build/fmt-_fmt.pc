@@ -1,9 +1,0 @@
-prefix=C:/Users/jawad/.conan2/p/fmtf6693e9b8f040/p
-libdir1=${prefix}/lib
-includedir1=${prefix}/include
-
-Name: fmt-_fmt
-Description: Conan component: fmt-_fmt
-Version: 9.1.0
-Libs: -L"${libdir1}" -lfmt 
-Cflags: -I"${includedir1}" 
