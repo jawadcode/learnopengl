@@ -1,21 +1,28 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include <span>
+#include <array>
 #include "window.hpp"
 #include "logger.hpp"
+#include "vbo.hpp"
+#include "index_buffer.hpp"
 
 int main() {
     Logger logger;
-    #define LOGGER logger
 
     Window window(logger, 800, 600, "LearnOpenGL");
+
     // clang-format off
-    float vertices[] = {
+    auto vertices = {
         -0.5f, -0.5f, 0.0f,
          0.5f, -0.5f, 0.0f,
          0.0f,  0.5f, 0.0f,
     };
     // clang-format on
+
+    VBO vbo(std::span{vertices});
+
     while (!window.should_close()) {
         window.process_input();
 
