@@ -23,6 +23,9 @@ int main() {
 
     VBO vbo(std::span{vertices});
 
+    //TOOD: Figure out wtf VAOs are and create a class that works nicely with
+    // the VBO one, as well as provides meaningful abstractions
+
     while (!window.should_close()) {
         window.process_input();
 
