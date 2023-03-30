@@ -4,15 +4,14 @@
 
 class Program {
   private:
-    GLuint m_program_id;
     GLuint m_vertex_shader_id;
     GLuint m_fragment_shader_id;
-    const std::string m_vertex_shader;
-    const std::string m_fragment_shader;
+    GLuint m_program_id;
     Logger &logger;
 
   public:
-    Program(Logger &logger, const std::string &vertex_path, const std::string &fragment_path);
+    Program(Logger &logger, const std::string &vertex_source, const std::string &fragment_source);
     ~Program();
+    void link();
     void attach();
 };

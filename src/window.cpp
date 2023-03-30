@@ -11,6 +11,9 @@ Window::Window(Logger &logger, GLint width, GLint height,
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
     m_raw_window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
     if (m_raw_window == NULL) {
         LOG(LogLevel::Fatal, "Failed to create GLFW window\n");
@@ -18,17 +21,19 @@ Window::Window(Logger &logger, GLint width, GLint height,
         std::exit(1);
     }
     glfwMakeContextCurrent(m_raw_window);
-
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        LOG(LogLevel::Fatal, "Failed to initialize GLAD");
-        std::exit(1);
-    }
-    glViewport(0, 0, width, height);
     glfwSetFramebufferSizeCallback(
         m_raw_window, [](GLFWwindow *window, GLint width, GLint height) {
             glViewport(0, 0, width, height);
         });
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        LOG(LogLevel::Fatal, "Failed to initialize GLAD");
+        std::exit(1);
+    }
     LOG(LogLevel::Info, "GLFW window initialized");
+    auto vendor = (const char *)glGetString(GL_VENDOR);
+    auto renderer = (const char *)glGetString(GL_RENDERER);
+    LOG(LogLevel::Info, "GPU Info - Vendor: {}, Renderer: {}", vendor,
+        renderer);
 }
 
 void Window::process_input() {
