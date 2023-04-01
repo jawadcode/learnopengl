@@ -8,12 +8,13 @@
 class IndexBuffer {
   private:
     GLuint m_index_buffer_id;
-    std::size_t m_count;
 
   public:
-    IndexBuffer(const std::span<GLuint> indices);
+    IndexBuffer();
 
     ~IndexBuffer();
+
+    void init(std::span<const GLuint> indices);
 
     void Bind() const;
 

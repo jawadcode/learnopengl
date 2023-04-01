@@ -3,6 +3,7 @@
 #include <iostream>
 #include <span>
 #include <array>
+#include <vector>
 #include "window.hpp"
 #include "logger.hpp"
 #include "program.hpp"
@@ -32,10 +33,19 @@ int main() {
     Window window(logger, 800, 600, "LearnOpenGL");
 
     // clang-format off
-    auto vertices = {
+    const std::array<GLfloat, 18> vertices = {
         -0.5f, -0.5f, 0.0f,
          0.5f, -0.5f, 0.0f,
          0.0f,  0.5f, 0.0f,
+
+         0.5f, -0.5f, 0.0f,
+        -0.5f, -0.5f, 0.0f,
+        -0.5f,  0.5f, 0.0f,
+    };
+
+    const std::array<GLuint, 6> indices = {
+        0U, 1U, 3U,
+        1U, 2U, 3U,
     };
     // clang-format on
 
@@ -45,9 +55,15 @@ int main() {
     GLuint vao;
     glGenVertexArrays(1, &vao);
     VBO vbo;
+    IndexBuffer ebo;
+
     glBindVertexArray(vao);
-    vbo.init(std::span{vertices});
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), NULL);
+
+    vbo.init<float>(vertices);
+    ebo.init(indices);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat),
+                          (GLvoid *)0);
+
     glEnableVertexAttribArray(0);
     vbo.unbind();
     glBindVertexArray(0);
@@ -60,7 +76,7 @@ int main() {
 
         program.attach();
         glBindVertexArray(vao);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 
         window.swap_buffers();
         glfwPollEvents();

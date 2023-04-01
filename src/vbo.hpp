@@ -12,10 +12,11 @@ class VBO {
 
   public:
     VBO();
-    
-    template <class Vertex> void init(const std::span<Vertex> data) {
+
+    template <class Vertex> void init(std::span<const Vertex> vertices) {
         glBindBuffer(GL_ARRAY_BUFFER, m_vbo_id);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * data.size(), data.data(), GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(),
+                     vertices.data(), GL_STATIC_DRAW);
     }
 
     ~VBO();

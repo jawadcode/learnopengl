@@ -10,7 +10,8 @@ class Program {
     Logger &logger;
 
   public:
-    Program(Logger &logger, const std::string &vertex_source, const std::string &fragment_source);
+    Program(Logger &logger, const std::string &vertex_source,
+            const std::string &fragment_source);
     ~Program();
     void link();
     void attach();
