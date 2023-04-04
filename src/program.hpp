@@ -4,15 +4,21 @@
 
 class Program {
   private:
-    GLuint m_vertex_shader_id;
-    GLuint m_fragment_shader_id;
     Logger &logger;
 
   public:
     GLuint m_program_id;
+
     Program(Logger &logger, const std::string &vertex_source,
             const std::string &fragment_source);
+
     ~Program();
-    void link();
+
     void attach();
+
+    void set_uniform(const std::string &name, GLboolean uniform) const;
+
+    void set_uniform(const std::string &name, GLint uniform) const;
+
+    void set_uniform(const std::string &name, GLfloat uniform) const;
 };

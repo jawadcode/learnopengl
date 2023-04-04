@@ -81,5 +81,11 @@ class Logger {
     }
 };
 
+// Because MSVC just *has* to be special
+#ifdef _MSC_VER
 #define LOG(level, fmt, ...)                                                   \
     (LOGGER).log(level, __FILE__, __LINE__, fmt, __VA_ARGS__)
+#else
+#define LOG(level, fmt, ...)                                                   \
+    (LOGGER).log(level, __FILE__, __LINE__, fmt __VA_OPT__(, ) __VA_ARGS__)
+#endif

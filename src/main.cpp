@@ -1,3 +1,4 @@
+#include <cmath>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/vec3.hpp>
@@ -13,19 +14,26 @@
 
 const std::string VERTEX_SOURCE = R"(#version 330 core
 layout (location = 0) in vec3 pos;
+layout (location = 1) in vec3 colour;
+
+uniform float timer;
+out vec3 our_colour;
 
 void main() {
-    gl_Position = vec4(pos, 1.0);
+    mat3 rotation = mat3(cos(timer), -sin(timer), 0.0,
+                         sin(timer),  cos(timer), 0.0,
+                         0.0,         0.0,        1.0);
+    gl_Position = vec4(rotation * pos, 1.0);
+    our_colour = colour;
 }
 )";
 
 const std::string FRAGMENT_SOURCE = R"(#version 330 core
 out vec4 frag_colour;
-
-uniform vec4 our_colour;
+in vec3 our_colour;
 
 void main() {
-    frag_colour = our_colour;
+    frag_colour = vec4(our_colour, 1.0);
 }
 )";
 
@@ -33,16 +41,18 @@ int main() {
     Logger logger;
 #define LOGGER logger
 
-    Window window(logger, 800, 600, "LearnOpenGL");
+    Window window(logger, 500, 500, "LearnOpenGL");
 
-    const std::array<glm::vec3, 3> vertices = {
-        glm::vec3(0.5f, -0.5f, 0.0f),  // bottom right
-        glm::vec3(-0.5f, -0.5f, 0.0f), // bottom left
-        glm::vec3(0.0f, 0.5f, 0.0f),   // top
+    // clang-format off
+    const std::array<glm::vec3, 6> vertices = {
+        // position:                             colour:
+        glm::vec3(-std::sqrt(3)/2, -0.5f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), // bottom right
+        glm::vec3( std::sqrt(3)/2, -0.5f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), // bottom left
+        glm::vec3( 0.0f,            1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), // top
     };
+    // clang-format on
 
     Program program(logger, VERTEX_SOURCE, FRAGMENT_SOURCE);
-    program.link();
 
     GLuint vao;
     glGenVertexArrays(1, &vao);
@@ -51,9 +61,16 @@ int main() {
     glBindVertexArray(vao);
 
     vbo.init<glm::vec3>(vertices);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), NULL);
-
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 2 * sizeof(glm::vec3),
+                          (GLvoid *)0);
     glEnableVertexAttribArray(0);
+
+    // colour attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 2 * sizeof(glm::vec3),
+                          (GLvoid *)sizeof(glm::vec3));
+    glEnableVertexAttribArray(1);
+
     vbo.bind();
 
     while (!window.should_close()) {
@@ -63,15 +80,7 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         program.attach();
-
-        auto time = glfwGetTime();
-        auto red = cos(time) / 2.0 + 0.5;
-        auto green = sin(time) / 2.0 + 0.5;
-        auto blue = (red + green) / 2.0;
-        auto vertex_colour_location =
-            glGetUniformLocation(program.m_program_id, "our_colour");
-        glUniform4f(vertex_colour_location, red, green, blue, 1.0f);
-
+        program.set_uniform("timer", (GLfloat)glfwGetTime());
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
         window.swap_buffers();
