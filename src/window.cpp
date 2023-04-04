@@ -30,6 +30,7 @@ Window::Window(Logger &logger, GLint width, GLint height,
         std::exit(1);
     }
     LOG(LogLevel::Info, "GLFW window initialized");
+
     auto vendor = (const char *)glGetString(GL_VENDOR);
     auto renderer = (const char *)glGetString(GL_RENDERER);
     LOG(LogLevel::Info, "GPU Info - Vendor: {}, Renderer: {}", vendor,

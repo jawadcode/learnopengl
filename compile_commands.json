@@ -1,26 +1,44 @@
 [
   {
     "directory": "C:\\Users\\jawad\\Desktop\\learnopengl\\build\\meson-src",
-    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw40c1593965e87/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtb953acb39c88b/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/W2\" \"/std:c17\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_glad.c.pdb\" /Folearnopengl.exe.p/src_glad.c.obj \"/c\" ../../src/glad.c",
+    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw40c1593965e87/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtb953acb39c88b/p/include\" \"-IC:/Users/jawad/.conan2/p/glmb8583f8d3b716/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/Zc:__cplusplus\" \"/W2\" \"/EHsc\" \"/std:c++20\" \"/permissive-\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_main.cpp.pdb\" /Folearnopengl.exe.p/src_main.cpp.obj \"/c\" ../../src/main.cpp",
+    "file": "../../src/main.cpp",
+    "output": "learnopengl.exe.p/src_main.cpp.obj"
+  },
+  {
+    "directory": "C:\\Users\\jawad\\Desktop\\learnopengl\\build\\meson-src",
+    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw40c1593965e87/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtb953acb39c88b/p/include\" \"-IC:/Users/jawad/.conan2/p/glmb8583f8d3b716/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/W2\" \"/std:c17\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_glad.c.pdb\" /Folearnopengl.exe.p/src_glad.c.obj \"/c\" ../../src/glad.c",
     "file": "../../src/glad.c",
     "output": "learnopengl.exe.p/src_glad.c.obj"
   },
   {
     "directory": "C:\\Users\\jawad\\Desktop\\learnopengl\\build\\meson-src",
-    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw40c1593965e87/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtb953acb39c88b/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/Zc:__cplusplus\" \"/W2\" \"/EHsc\" \"/std:c++20\" \"/permissive-\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_logger.cpp.pdb\" /Folearnopengl.exe.p/src_logger.cpp.obj \"/c\" ../../src/logger.cpp",
+    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw40c1593965e87/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtb953acb39c88b/p/include\" \"-IC:/Users/jawad/.conan2/p/glmb8583f8d3b716/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/Zc:__cplusplus\" \"/W2\" \"/EHsc\" \"/std:c++20\" \"/permissive-\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_logger.cpp.pdb\" /Folearnopengl.exe.p/src_logger.cpp.obj \"/c\" ../../src/logger.cpp",
     "file": "../../src/logger.cpp",
     "output": "learnopengl.exe.p/src_logger.cpp.obj"
   },
   {
     "directory": "C:\\Users\\jawad\\Desktop\\learnopengl\\build\\meson-src",
-    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw40c1593965e87/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtb953acb39c88b/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/Zc:__cplusplus\" \"/W2\" \"/EHsc\" \"/std:c++20\" \"/permissive-\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_window.cpp.pdb\" /Folearnopengl.exe.p/src_window.cpp.obj \"/c\" ../../src/window.cpp",
+    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw40c1593965e87/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtb953acb39c88b/p/include\" \"-IC:/Users/jawad/.conan2/p/glmb8583f8d3b716/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/Zc:__cplusplus\" \"/W2\" \"/EHsc\" \"/std:c++20\" \"/permissive-\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_window.cpp.pdb\" /Folearnopengl.exe.p/src_window.cpp.obj \"/c\" ../../src/window.cpp",
     "file": "../../src/window.cpp",
     "output": "learnopengl.exe.p/src_window.cpp.obj"
   },
   {
     "directory": "C:\\Users\\jawad\\Desktop\\learnopengl\\build\\meson-src",
-    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw40c1593965e87/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtb953acb39c88b/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/Zc:__cplusplus\" \"/W2\" \"/EHsc\" \"/std:c++20\" \"/permissive-\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_main.cpp.pdb\" /Folearnopengl.exe.p/src_main.cpp.obj \"/c\" ../../src/main.cpp",
-    "file": "../../src/main.cpp",
-    "output": "learnopengl.exe.p/src_main.cpp.obj"
+    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw40c1593965e87/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtb953acb39c88b/p/include\" \"-IC:/Users/jawad/.conan2/p/glmb8583f8d3b716/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/Zc:__cplusplus\" \"/W2\" \"/EHsc\" \"/std:c++20\" \"/permissive-\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_vbo.cpp.pdb\" /Folearnopengl.exe.p/src_vbo.cpp.obj \"/c\" ../../src/vbo.cpp",
+    "file": "../../src/vbo.cpp",
+    "output": "learnopengl.exe.p/src_vbo.cpp.obj"
+  },
+  {
+    "directory": "C:\\Users\\jawad\\Desktop\\learnopengl\\build\\meson-src",
+    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw40c1593965e87/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtb953acb39c88b/p/include\" \"-IC:/Users/jawad/.conan2/p/glmb8583f8d3b716/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/Zc:__cplusplus\" \"/W2\" \"/EHsc\" \"/std:c++20\" \"/permissive-\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_index_buffer.cpp.pdb\" /Folearnopengl.exe.p/src_index_buffer.cpp.obj \"/c\" ../../src/index_buffer.cpp",
+    "file": "../../src/index_buffer.cpp",
+    "output": "learnopengl.exe.p/src_index_buffer.cpp.obj"
+  },
+  {
+    "directory": "C:\\Users\\jawad\\Desktop\\learnopengl\\build\\meson-src",
+    "command": "\"cl\" \"-Ilearnopengl.exe.p\" \"-I.\" \"-I..\\..\" \"-I..\\..\\include\" \"-IC:/Users/jawad/.conan2/p/glfw40c1593965e87/p/include\" \"-IC:/Users/jawad/.conan2/p/fmtb953acb39c88b/p/include\" \"-IC:/Users/jawad/.conan2/p/glmb8583f8d3b716/p/include\" \"-DNDEBUG\" \"/MD\" \"/nologo\" \"/showIncludes\" \"/utf-8\" \"/Zc:__cplusplus\" \"/W2\" \"/EHsc\" \"/std:c++20\" \"/permissive-\" \"/O2\" \"/Gw\" \"/Fdlearnopengl.exe.p\\src_program.cpp.pdb\" /Folearnopengl.exe.p/src_program.cpp.obj \"/c\" ../../src/program.cpp",
+    "file": "../../src/program.cpp",
+    "output": "learnopengl.exe.p/src_program.cpp.obj"
   }
 ]

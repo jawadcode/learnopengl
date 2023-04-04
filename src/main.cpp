@@ -1,5 +1,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/vec3.hpp>
 #include <iostream>
 #include <span>
 #include <array>
@@ -11,18 +12,20 @@
 #include "index_buffer.hpp"
 
 const std::string VERTEX_SOURCE = R"(#version 330 core
-layout (location = 0) in vec3 aPos;
+layout (location = 0) in vec3 pos;
 
 void main() {
-    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+    gl_Position = vec4(pos, 1.0);
 }
 )";
 
 const std::string FRAGMENT_SOURCE = R"(#version 330 core
-out vec4 FragColor;
+out vec4 frag_colour;
+
+uniform vec4 our_colour;
 
 void main() {
-    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+    frag_colour = our_colour;
 }
 )";
 
@@ -32,22 +35,11 @@ int main() {
 
     Window window(logger, 800, 600, "LearnOpenGL");
 
-    // clang-format off
-    const std::array<GLfloat, 18> vertices = {
-        -0.5f, -0.5f, 0.0f,
-         0.5f, -0.5f, 0.0f,
-         0.0f,  0.5f, 0.0f,
-
-         0.5f, -0.5f, 0.0f,
-        -0.5f, -0.5f, 0.0f,
-        -0.5f,  0.5f, 0.0f,
+    const std::array<glm::vec3, 3> vertices = {
+        glm::vec3(0.5f, -0.5f, 0.0f),  // bottom right
+        glm::vec3(-0.5f, -0.5f, 0.0f), // bottom left
+        glm::vec3(0.0f, 0.5f, 0.0f),   // top
     };
-
-    const std::array<GLuint, 6> indices = {
-        0U, 1U, 3U,
-        1U, 2U, 3U,
-    };
-    // clang-format on
 
     Program program(logger, VERTEX_SOURCE, FRAGMENT_SOURCE);
     program.link();
@@ -55,18 +47,14 @@ int main() {
     GLuint vao;
     glGenVertexArrays(1, &vao);
     VBO vbo;
-    IndexBuffer ebo;
 
     glBindVertexArray(vao);
 
-    vbo.init<float>(vertices);
-    ebo.init(indices);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat),
-                          (GLvoid *)0);
+    vbo.init<glm::vec3>(vertices);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), NULL);
 
     glEnableVertexAttribArray(0);
-    vbo.unbind();
-    glBindVertexArray(0);
+    vbo.bind();
 
     while (!window.should_close()) {
         window.process_input();
@@ -75,8 +63,16 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         program.attach();
-        glBindVertexArray(vao);
-        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+
+        auto time = glfwGetTime();
+        auto red = cos(time) / 2.0 + 0.5;
+        auto green = sin(time) / 2.0 + 0.5;
+        auto blue = (red + green) / 2.0;
+        auto vertex_colour_location =
+            glGetUniformLocation(program.m_program_id, "our_colour");
+        glUniform4f(vertex_colour_location, red, green, blue, 1.0f);
+
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
         window.swap_buffers();
         glfwPollEvents();

@@ -5,7 +5,7 @@
 #include <GLFW/glfw3.h>
 #include "logger.hpp"
 
-#define MAX_INFO_LOG_LEN 512
+#define MAX_INFO_LOG_LEN 1024
 #define LOGGER logger
 
 const std::string read_file(const std::string &path) {
@@ -21,7 +21,7 @@ void check_shader_compilation(GLuint shader_id, bool is_vertex,
     glGetShaderiv(shader_id, GL_COMPILE_STATUS, &success);
     if (!success) {
         GLchar info_log[MAX_INFO_LOG_LEN];
-        glGetShaderInfoLog(shader_id, MAX_INFO_LOG_LEN, NULL, info_log);
+        glGetShaderInfoLog(shader_id, MAX_INFO_LOG_LEN, nullptr, info_log);
         const std::string shader_type = is_vertex ? "vertex" : "fragment";
         LOG(LogLevel::Fatal, "Failed to compile {} shader: {}", shader_type,
             info_log);
@@ -62,7 +62,7 @@ void Program::link() {
     glGetProgramiv(m_vertex_shader_id, GL_LINK_STATUS, &success);
     if (!success) {
         char info_log[MAX_INFO_LOG_LEN];
-        glGetProgramInfoLog(m_program_id, 512, NULL, info_log);
+        glGetProgramInfoLog(m_program_id, MAX_INFO_LOG_LEN, nullptr, info_log);
         std::cout << info_log << std::endl;
         LOG(LogLevel::Fatal, "Failed to link shaders: {}", info_log);
         std::exit(1);

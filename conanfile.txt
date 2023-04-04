@@ -1,6 +1,7 @@
 [requires]
 glfw/3.3.8
 fmt/9.1.0
+glm/cci.20230113
 
 [generators]
 PkgConfigDeps
