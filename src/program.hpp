@@ -14,7 +14,7 @@ class Program {
 
     ~Program();
 
-    void attach();
+    void use();
 
     void set_uniform(const std::string &name, GLboolean uniform) const;
 

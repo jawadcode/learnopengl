@@ -15,20 +15,6 @@ const std::string read_file(const std::string &path) {
     return content;
 }
 
-void check_shader_compilation(GLuint shader_id, bool is_vertex,
-                              Logger &logger) {
-    int success;
-    glGetShaderiv(shader_id, GL_COMPILE_STATUS, &success);
-    if (!success) {
-        GLchar info_log[MAX_INFO_LOG_LEN];
-        glGetShaderInfoLog(shader_id, MAX_INFO_LOG_LEN, nullptr, info_log);
-        const std::string shader_type = is_vertex ? "vertex" : "fragment";
-        LOG(LogLevel::Fatal, "Failed to compile {} shader: {}", shader_type,
-            info_log);
-        std::exit(1);
-    }
-}
-
 Program::Program(Logger &logger, const std::string &vertex_source,
                  const std::string &fragment_source)
     : logger(logger) {
@@ -80,7 +66,7 @@ Program::Program(Logger &logger, const std::string &vertex_source,
 
 Program::~Program() { glDeleteProgram(m_program_id); }
 
-void Program::attach() { glUseProgram(m_program_id); }
+void Program::use() { glUseProgram(m_program_id); }
 
 void Program::set_uniform(const std::string &name, GLboolean uniform) const {
     glUniform1i(glGetUniformLocation(m_program_id, name.c_str()),
