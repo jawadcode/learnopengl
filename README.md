@@ -15,15 +15,18 @@ None, other than OpenGL itself
 # How to Build:
 
 ```bash
-conan install . --output-folder=build --build=missing
-meson configure -Dcpp_std=c++20 ./build/meson-src
+conan install . --output-folder=builddir --build=missing
 
-cd build
-meson setup --native-file conan_meson_native.ini .. meson-src
-meson compile -C meson-src
+cd builddir
+# Debug
+meson setup --buildtype=debug --native-file=conan_meson_native.ini -Dcpp_std=c++20 -Db_sanitize=address -Dwarning_level=3 .. meson-src-debug
+meson compile -C meson-src-debug
+# Release
+meson setup --buildtype=release -Dcpp_std=c++20 -Db_lto=true -Dwarning_level=3 --native-file conan_meson_native.ini .. meson-src-release
+meson compile -C meson-src-release
 
 # Windows
 ./meson-src/learnopengl.exe
-# Unices
+# Unix
 ./meson-src/learnopengl
 ```
