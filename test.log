@@ -1,0 +1,6 @@
+INFO [2023-07-31T00:43:46Z] Window::Window(const int, const int, const std::string &, const int, const int, const int) @ ../../src/window.cpp(17:45) :: Initialised GLFW window (with hints: OpenGL core profile, version 3.3)
+INFO [2023-07-31T00:43:46Z] Window::Window(const int, const int, const std::string &, const int, const int, const int) @ ../../src/window.cpp(26:54) :: Created GLFW window and OpenGL context
+INFO [2023-07-31T00:43:46Z] void Window::load_gl_loader() @ ../../src/window.cpp(40:37) :: GLAD GL loader loaded
+DEBUG [2023-07-31T00:43:46Z] void Window::dump_gpu_info() @ ../../src/window.cpp(46:70) :: GPU Info - Vendor: Intel, Renderer: Mesa Intel(R) UHD Graphics 620 (KBL GT2)
+INFO [2023-07-31T00:43:48Z] int main() @ ../../src/main.cpp(34:65) :: ESC pressed, window close event triggered
+INFO [2023-07-31T00:43:48Z] Window::~Window() @ ../../src/window.cpp(50:47) :: GLFW window closed, terminating
